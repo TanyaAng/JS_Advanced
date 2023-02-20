@@ -5,12 +5,11 @@ function func(number){
     function AllDigitsSame(number){
         let numToString=number.toString();
         let firstDigit=numToString[0];
-        for (let i=0; i<numToString.length; i++){
+        for (let i=1; i<numToString.length; i++){
             if(numToString[i]!==firstDigit){
                 console.log('false');
                 return;
-            }
-            
+            }     
         }
         console.log('true');
 

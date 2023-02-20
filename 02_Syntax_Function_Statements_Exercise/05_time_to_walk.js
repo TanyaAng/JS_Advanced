@@ -1,9 +1,19 @@
-function timeToWalk(steps, meters, speed){
-    let total_km = steps*meters/1000;
-    let minutes_for_break = Math.floor(total_km/0.5);
-    let hours_for_break = minutes_for_break/60;
-    let total_time_in_hours=total_km/speed + hours_for_break;
-    console.log(total_time_in_hours);
+function timeToWalk(steps, footprint, speed){
+    let distanceInMeters = steps*footprint;
+    let speedMetersInSec = speed/3.6;
+    let time = distanceInMeters/speedMetersInSec;
+    let rest = Math.floor(distanceInMeters/500);
+
+    let timeInMin = Math.floor(time/60);
+    let timeInSec = (time - (timeInMin*60)).toFixed(0);
+    let timeInHours = Math.floor(time/3600);
+    timeInMin+=rest;
+    timeInHours+=Math.floor(timeInMin/60);
+    timeInMin=timeInMin%60;
+    let formattedH = timeInHours<10 ? `0${timeInHours}` :`${timeInHours}`;
+    let formattedMin = timeInMin<10 ? `0${timeInMin}` :`${timeInMin}`;
+    let formattedSeconds = timeInSec<10 ? `0${timeInSec}` :`${timeInSec}`;
+    console.log(`${formattedH}:${formattedMin}:${formattedSeconds}`);
 }
 
 timeToWalk(4000,0.60,5);

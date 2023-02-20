@@ -11,16 +11,16 @@ function roadRadar (speed, area){
         case ('motorway'): checkSpeedOfArea(speed, speed_limit_motorway); break;
     }
     function checkSpeedOfArea(speed, speed_limit){
-        if (speed<speed_limit){
+        if (speed<=speed_limit){
             console.log(`Driving ${speed} km/h in a ${speed_limit} zone`);
         } else {
-            let diff=Math.abs(speed_limit-speed);
+            let diff=Math.abs(speed - speed_limit);
             let status_speeding=speedStatus(diff);
             console.log(`The speed is ${diff} km/h faster than the allowed speed of ${speed_limit} - ${status_speeding}`)
         };
 
     }
-    function speedStatus (diff){
+    function speedStatus(diff){
         if (diff<=20){
             return 'speeding';
         }else if (diff<=40){
